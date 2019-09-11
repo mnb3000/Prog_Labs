@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "input_lib/input_lib.h"
 
 int roman(int n, int a, char r) {
     if (n < 0) {
@@ -13,20 +14,7 @@ int roman(int n, int a, char r) {
 }
 
 int main() {
-    int a = 0;
-    char s[128];
-    printf("ENTER NUMBER:\n");
-    fgets(s, 128, stdin);
-    for (int i = 0; i < 128; ++i) {
-        if (s[i] == 10) {
-            break;
-        }
-        if (s[i] < 48 || s[i] > 57) {
-            printf("Invalid number!");
-            return 1;
-        }
-        a += (int) s[i] - 48;
-    }
+    int a = inputInt("ENTER NUMBER:\n", 1);
     a=roman(a,1000,'M');
     a=roman(a,500,'D');
     a=roman(a,100,'C');
