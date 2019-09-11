@@ -1,28 +1,12 @@
 #include <stdio.h>
 #include <math.h>
-#include <string.h>
-
-double inputDouble(int doNegativeCheck) {
-    double out;
-    char str[256];
-    scanf("%lf", &out);
-    fgets(str, sizeof(str), stdin);
-    if (strlen(str) > 1) {
-        printf("Invalid input! Try again!\n");
-        return inputDouble(doNegativeCheck);
-    }
-    if (doNegativeCheck > 0 && out < 0) {
-        printf("Input is negative! Try again!\n");
-        return inputDouble(doNegativeCheck);
-    }
-    return out;
-}
+#include "input_lib/input_lib.h"
 
 int main() {
     double sides[3];
     for (int i = 0; i < 3; ++i) {
         printf("Enter side %d: ", i + 1);
-        sides[i] = inputDouble(1);
+        sides[i] = inputDouble("", 1);
     }
     if (sides[0] + sides[1] <= sides[2] || sides[0] + sides[2] <= sides[1] || sides[1] + sides[2] <= sides[0]) {
         printf("Impossible triangle!");
