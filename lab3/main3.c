@@ -15,12 +15,12 @@ int main() {
         double y1 = u + v;
         double complexYRealPart = -((u + v) / 2);
         double complexYImagPart = (sqrt(3) * (u - v)) / 2;
-        printf("y1 = %lf, y2 = %lf + i * %lf, y3 = %lf - i * %lf", y1, complexYRealPart, complexYImagPart, complexYRealPart, complexYImagPart);
+        printf("y1 = %lf\ny2 = %lf + i * %lf\ny3 = %lf - i * %lf", y1, complexYRealPart, complexYImagPart, complexYRealPart, complexYImagPart);
         return 0;
     } else if (d == 0) {
         double y1 = 3 * q / p;
         double y2 = -((3 * q) / (2 * p));
-        printf("y1 = %lf, y2 = %lf, y3 = %lf", y1, y2, y2);
+        printf("y1 = %lf\ny2 = %lf\ny3 = %lf", y1, y2, y2);
         return 0;
     } else {
         double r = sqrt(-pow(p, 3) / 27);
@@ -28,7 +28,7 @@ int main() {
         double y1 = 2 * fabs(cbrt(r)) * cos(fi / 3);
         double y2 = 2 * fabs(cbrt(r)) * cos((fi + 2 * M_PI) / 3);
         double y3 = 2 * fabs(cbrt(r)) * cos((fi + 4 * M_PI) / 3);
-        printf("y1 = %lf, y2 = %lf, y3 = %lf", y1, y2, y3);
+        printf("y1 = %lf\ny2 = %lf\ny3 = %lf", y1, y2, y3);
         return 0;
     }
 }
