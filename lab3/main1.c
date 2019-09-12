@@ -17,12 +17,12 @@ int main() {
     double k;
     double eps;
     int doXNegativeCheck = 0;
-    k = inputDouble("Input k: ", 0, 1);
+    k = inputDouble("Input k: ", 0);
     if (fmod(k, 2) == 0) {
         doXNegativeCheck = 1;
     }
-    x = inputDouble("Input x: ", doXNegativeCheck, 1);
-    eps = inputDouble("Input epsilon: ", 1, 1);
+    x = inputDouble("Input x: ", doXNegativeCheck);
+    eps = inputDouble("Input epsilon: ", 1);
     printf("Y = %le", root(x, k, eps));
     return 0;
 }
