@@ -3,9 +3,9 @@
 #include "input_lib/input_lib.h"
 
 int main() {
-    double a = inputDouble("Enter a: ", 0);
-    double b = inputDouble("Enter b: ", 0);
-    double c = inputDouble("Enter c: ", 0);
+    double a = inputDouble("Enter a: ", 0, 0);
+    double b = inputDouble("Enter b: ", 0, 0);
+    double c = inputDouble("Enter c: ", 0, 0);
     double p = b - (pow(a, 2) / 3);
     double q = ((2 * pow(a, 3)) / 27) - ((a * b) / 3) + c;
     double d = (pow(p, 3) / 27) + (pow(q, 2) / 4);
