@@ -6,7 +6,7 @@ int main() {
     double sides[3];
     for (int i = 0; i < 3; ++i) {
         printf("Enter side %d: ", i + 1);
-        sides[i] = inputDouble("", 1);
+        sides[i] = inputDouble("", 1, 0);
     }
     if (sides[0] + sides[1] <= sides[2] || sides[0] + sides[2] <= sides[1] || sides[1] + sides[2] <= sides[0]) {
         printf("Impossible triangle!");

@@ -8,19 +8,23 @@
  * @param doNegativeCheck Boolean value for negative check
  * @return Double value from stdin
  */
-double inputDouble(char message[], int doNegativeCheck) {
+double inputDouble(char message[], int doNegativeCheck, int doZeroCheck) {
     double out;
-    char str[256];
+    char str[2];
     printf("%s", message);
     scanf("%lf", &out);
     fgets(str, sizeof(str), stdin);
     if (strlen(str) > 1) {
         printf("Invalid input! Try again!\n");
-        return inputDouble(message, doNegativeCheck);
+        return inputDouble(message, doNegativeCheck, doZeroCheck);
     }
     if (doNegativeCheck > 0 && out < 0) {
         printf("Input is negative! Try again!\n");
-        return inputDouble(message, doNegativeCheck);
+        return inputDouble(message, doNegativeCheck, doZeroCheck);
+    }
+    if (doZeroCheck > 0 && out == 0) {
+        printf("Input is zero! Try again!\n");
+        return inputDouble(message, doNegativeCheck, doZeroCheck);
     }
     return out;
 }
@@ -34,7 +38,7 @@ double inputDouble(char message[], int doNegativeCheck) {
  */
 int inputInt(char message[], int doNegativeCheck) {
     int out;
-    char str[256];
+    char str[2];
     printf("%s", message);
     scanf("%d", &out);
     fgets(str, sizeof(str), stdin);
