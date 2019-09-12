@@ -1,6 +1,13 @@
 #include <stdio.h>
 #include <string.h>
 
+/**
+ * Reads double value from stdin and checks validity of input
+ * If validation fails - calls itself recursively
+ * @param message Message to print before prompt
+ * @param doNegativeCheck Boolean value for negative check
+ * @return Double value from stdin
+ */
 double inputDouble(char message[], int doNegativeCheck) {
     double out;
     char str[256];
@@ -18,6 +25,13 @@ double inputDouble(char message[], int doNegativeCheck) {
     return out;
 }
 
+/**
+ * Reads int value from stdin and checks validity of input
+ * If validation fails - calls itself recursively
+ * @param message Message to print before prompt
+ * @param doNegativeCheck Boolean value for negative check
+ * @return Int value from stdin
+ */
 int inputInt(char message[], int doNegativeCheck) {
     int out;
     char str[256];
