@@ -10,14 +10,19 @@ int inputIntAndCheckBoundaries(char *message, int doNegativeCheck, int notLessTh
     return res;
 }
 
-int getDayIndex(int date, int month, int year) {
+int isLeapYear(int year) {
     int isLeapYear = 0;
     if (((year % 100 != 0) && (year % 4 == 0)) || ((year % 100 == 0) && (year % 400 == 0))) {
         isLeapYear = 1;
     }
+    return isLeapYear;
+}
+
+int getDayIndex(int date, int month, int year) {
+    int LeapYear = isLeapYear(year);
     int n = 0;
     if (month <= 2) {
-        if (isLeapYear == 1) {
+        if (LeapYear == 1) {
             n = 1;
         } else {
             n = 2;
@@ -29,9 +34,16 @@ int getDayIndex(int date, int month, int year) {
 int main() {
     int date, month, year;
     char *days[7] = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
-    date = inputIntAndCheckBoundaries("Input date: ", 1, 1, 31);
-    month = inputIntAndCheckBoundaries("Input month: ", 1, 1, 12);
-    year = inputIntAndCheckBoundaries("Input year: ", 1, 1000, 9999);
+    int daysInMonth[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    do {
+        date = inputIntAndCheckBoundaries("Input date: ", 1, 1, 31);
+        month = inputIntAndCheckBoundaries("Input month: ", 1, 1, 12);
+        year = inputIntAndCheckBoundaries("Input year: ", 1, 1000, 9999);
+        daysInMonth[1] = 28 + isLeapYear(year);
+        if (date > daysInMonth[month - 1]) {
+            printf("Invalid date!\n");
+        }
+    } while (date > daysInMonth[month - 1]);
     int day = getDayIndex(date, month, year);
     printf("%s", days[day]);
 }

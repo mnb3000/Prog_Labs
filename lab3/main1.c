@@ -22,7 +22,9 @@ int main() {
         doXNegativeCheck = 1;
     }
     x = inputDouble("Input x: ", doXNegativeCheck, 1);
-    eps = inputDouble("Input epsilon: ", 1, 1);
+    do {
+        eps = inputDouble("Input epsilon (between 1e-20 and 1): ", 1, 1);
+    } while (eps < 1e-20);
     printf("Y = %le", root(x, k, eps));
     return 0;
 }
