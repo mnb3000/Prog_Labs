@@ -14,7 +14,7 @@ int roman(int n, int a, char r) {
 }
 
 int main() {
-    int a = inputInt("ENTER NUMBER:\n", 1);
+    int a = inputInt("ENTER NUMBER:\n", 1, 0);
     a=roman(a,1000,'M');
     a=roman(a,500,'D');
     a=roman(a,100,'C');

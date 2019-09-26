@@ -2,7 +2,7 @@
 #include "input_lib/input_lib.h"
 
 int inputIntAndCheckBoundaries(char *message, int doNegativeCheck, int notLessThan, int notGreaterThen) {
-    int res = inputInt(message, doNegativeCheck);
+    int res = inputInt(message, doNegativeCheck, 0);
     if (res < notLessThan || res > notGreaterThen) {
         printf("Invalid boundaries!\n");
         return inputIntAndCheckBoundaries(message, doNegativeCheck, notLessThan, notGreaterThen);

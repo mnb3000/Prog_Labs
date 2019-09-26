@@ -36,7 +36,7 @@ double inputDouble(char message[], int doNegativeCheck, int doZeroCheck) {
  * @param doNegativeCheck Boolean value for negative check
  * @return Int value from stdin
  */
-int inputInt(char message[], int doNegativeCheck) {
+int inputInt(char message[], int doNegativeCheck, int doZeroCheck) {
     int out;
     char str[128];
     printf("%s", message);
@@ -44,11 +44,15 @@ int inputInt(char message[], int doNegativeCheck) {
     fgets(str, sizeof(str), stdin);
     if (strlen(str) > 1) {
         printf("Invalid input! Try again!\n");
-        return inputInt(message, doNegativeCheck);
+        return inputInt(message, doNegativeCheck, doZeroCheck);
     }
     if (doNegativeCheck > 0 && out < 0) {
         printf("Input is negative! Try again!\n");
-        return inputInt(message, doNegativeCheck);
+        return inputInt(message, doNegativeCheck, doZeroCheck);
+    }
+    if (doZeroCheck > 0 && out == 0) {
+        printf("Input is zero! Try again!\n");
+        return inputInt(message, doNegativeCheck, doZeroCheck);
     }
     return out;
 }
