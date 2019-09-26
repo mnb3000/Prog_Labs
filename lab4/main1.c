@@ -51,8 +51,8 @@ double taylorCos(double x, double eps) {
  * Prints line separator for n columns
  * @param columns Number of columns
  */
-void printTableSeparator(int columns) {
-    for (int i = 0; i < columns; ++i) {
+void printTableSeparator(size_t columns) {
+    for (size_t i = 0; i < columns; ++i) {
         putchar('+');
         for (int j = 0; j < 10; ++j) {
             putchar('-');
@@ -64,11 +64,11 @@ void printTableSeparator(int columns) {
 /**
  * Prints table header
  * @param headers Array of header names
+ * @param columns Length of headers array
  */
-void printTableHeader(char **headers) {
-    int columns = sizeof(*headers);
+void printTableHeader(char *headers[], size_t columns) {
     printTableSeparator(columns);
-    for (int i = 0; i < columns; ++i) {
+    for (size_t i = 0; i < columns; ++i) {
         printf("|%10s", headers[i]);
     }
     printf("%s", "|\n");
@@ -78,10 +78,10 @@ void printTableHeader(char **headers) {
 /**
  * Prints table line of double values with unfixed number of columns
  * @param values Array of values to print
+ * @param columns Length of values array
  */
-void printDoubleValueTableLine(double *values) {
-    int columns = sizeof(values);
-    for (int i = 0; i < columns - 1; ++i) {
+void printDoubleValueTableLine(double *values, size_t columns) {
+    for (size_t i = 0; i < columns; ++i) {
         printf("|%10lf", values[i]);
     }
     printf("%s", "|\n");
@@ -95,7 +95,7 @@ int main() {
     double x2 = inputDouble("Enter x2: ", 0, 0);
     double dx = inputDouble("Enter dx: ", 0, 0);
     double eps = inputDouble("Enter epsilon: ", 0, 0);
-    printTableHeader(headers);
+    printTableHeader(headers, sizeof(headers) / sizeof(headers[0]));
     // x Initial value
     double x = x1;
     while (x <= x2) {
@@ -119,8 +119,10 @@ int main() {
         values[5] = rCos; // Math.h cos
         values[6] = rCos - tCos; // Cos difference
         // Data output
-        printDoubleValueTableLine(values);
+        printDoubleValueTableLine(values, 7);
         // X increment
         x += dx;
     }
+    printTableSeparator(sizeof(headers) / sizeof(headers[0]));
+    return 0;
 }
