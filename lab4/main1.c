@@ -92,8 +92,14 @@ int main() {
     printf("Input all values IN DEGREES!\n");
     // Data input
     double x1 = inputDouble("Enter x1: ", 0, 0);
-    double x2 = inputDouble("Enter x2: ", 0, 0);
-    double dx = inputDouble("Enter dx: ", 0, 0);
+    double x2 = inputDouble("Enter x2 (not less than 1e-2): ", 0, 0);
+    while (x2 < 1e-2) {
+        x2 = inputDouble("Enter x2 (not less than 1e-2): ", 0, 0);
+    }
+    double dx = inputDouble("Enter dx (not less than 1e-2): ", 0, 0);
+    while (dx < 1e-2) {
+        dx = inputDouble("Enter dx (not less than 1e-2): ", 0, 0);
+    }
     double eps = inputDouble("Enter epsilon: ", 0, 0);
     printTableHeader(headers, sizeof(headers) / sizeof(headers[0]));
     // x Initial value
