@@ -56,3 +56,28 @@ int inputInt(char message[], int doNegativeCheck, int doZeroCheck) {
     }
     return out;
 }
+
+void clean_stdin(){
+    int c;
+    do {
+        c = getchar();
+    } while (c != '\n' && c != EOF);
+}
+
+/**
+ * Reads string from stdin and writes it to memory location
+ * If input is longer than len - other input is flushed
+ * @param message Message to print before prompt
+ * @param string Pointer to string to write to
+ * @param len Maximum length of input
+ */
+void inputString(char message[], char* string, size_t len) {
+    printf("%s", message);
+    char format[100];
+    sprintf(format, "%%%zus", len);
+    scanf(format, string);
+    if (string[len] != '\0') {
+        string[len] = '\0';
+    }
+    clean_stdin();
+}
