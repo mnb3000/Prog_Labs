@@ -21,16 +21,25 @@ void bubbleSort(char *arr[], size_t n, int isDescending) {
 }
 
 int main() {
-    int len = inputInt("Enter array length: ", 1, 1);
-    int stringLen = inputInt("Enter maximum string length: ", 1, 1);
-    char arr[len][stringLen + 1];
-    char *pointerArr[len];
+    int len = inputInt("Enter array length: ", 1, 1); // Array length
+    int stringLen = inputInt("Enter maximum string length: ", 1, 1); // Maximum string length
+    char arr[len][stringLen + 1]; // 2D array init
+    char *pointerArr[len]; // Pointer array init
+
+    /*
+     * String input
+     */
     for (int i = 0; i < len; ++i) {
         printf("Enter string %d (All strings longer than maximum length will be shortened)", i);
         inputString(": ", arr[i], stringLen);
         pointerArr[i] = arr[i];
     }
+
     bubbleSort(pointerArr, len, 0);
+
+    /*
+     * Array output
+     */
     for (int i = 0; i < len; ++i) {
         printf("%s\n", pointerArr[i]);
     }
