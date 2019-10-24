@@ -46,8 +46,8 @@ int main() {
                 sum[i] += a[i][j];
             }
         }
-        if (fabs(a[i][i]) < fabs(sum[i])) {
-            printf("Error: diagonal elements may not be bigger than sum of other elements in a row.\n");
+        if (fabs(a[i][i]) <= fabs(sum[i])) {
+            printf("Error: diagonal elements may not be less than sum of other elements in a row.\n");
             return 1;
         }
     }
