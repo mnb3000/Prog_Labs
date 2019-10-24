@@ -57,6 +57,33 @@ int inputInt(char message[], int doNegativeCheck, int doZeroCheck) {
     return out;
 }
 
+int inputIntMin(char message[], int doNegativeCheck, int doZeroCheck, int min) {
+    int res = inputInt(message, doNegativeCheck, doZeroCheck);
+    if (res < min) {
+        printf("Invalid boundaries!\n");
+        res = inputIntMin(message, doNegativeCheck, doZeroCheck, min);
+    }
+    return res;
+}
+
+int inputIntMax(char message[], int doNegativeCheck, int doZeroCheck, int max) {
+    int res = inputInt(message, doNegativeCheck, doZeroCheck);
+    if (res > max) {
+        printf("Invalid boundaries!\n");
+        res = inputIntMax(message, doNegativeCheck, doZeroCheck, max);
+    }
+    return res;
+}
+
+int inputIntMinMax(char message[], int min, int max) {
+    int res = inputInt(message, 0, 0);
+    if (res < min || res > max) {
+        printf("Invalid boundaries!\n");
+        res = inputIntMinMax(message, min, max);
+    }
+    return res;
+}
+
 void clean_stdin(){
     int c;
     do {
