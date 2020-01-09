@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <float.h>
 
 /**
  * Reads double value from stdin and checks validity of input
@@ -12,9 +13,10 @@ double inputDouble(char message[], int doNegativeCheck, int doZeroCheck) {
     double out;
     char str[128];
     printf("%s", message);
+    printf("Input should be between %e and %e\n", -DBL_MAX, DBL_MAX);
     scanf("%lf", &out);
     fgets(str, sizeof(str), stdin);
-    if (strlen(str) > 1) {
+    if (strlen(str) > 1 || out > DBL_MAX || out < -DBL_MIN) {
         printf("Invalid input! Try again!\n");
         return inputDouble(message, doNegativeCheck, doZeroCheck);
     }
